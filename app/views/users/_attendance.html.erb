@@ -1,0 +1,15 @@
+<%= t(".attendance") %>
+<%= form_for(:attendances, url: attendances_path) do |f| %>
+  <% if @attendance.nil? %>
+    <%= f.hidden_field :id, value: nil %>
+    <%= f.submit t(".start"), class: "btn btn-primary" %>
+  <% else %>
+    <% if @attendance.time_out.nil? %>
+      <%= f.hidden_field :id, value: @attendance.id %>
+      <%= f.submit t(".finish"), class: "btn btn-primary",
+        data: {confirm: t(".confirm")} %>
+    <% else %>
+      <%= t(".done") %>
+    <% end %>
+  <% end %>
+<% end %>
