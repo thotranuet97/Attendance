@@ -3,6 +3,13 @@ Rails.application.routes.draw do
   get "/login" => "logins#new"
   post "/login" => "logins#create"
   get "/logout" => "logins#destroy"
-  resources :users
+  resources :users, only: [:show, :edit, :update]
   resources :attendances, only: [:create, :destroy]
+  namespace :admin do
+    resources :users do
+      put "lock"
+      put "unlock"
+    end
+  end
+
 end

@@ -7,13 +7,13 @@ class ApplicationController < ActionController::Base
   end
 
   private
-    def logged_in_user
-      if !logged_in?
-      redirect_to login_url
-      end
+  def logged_in_user
+    if !logged_in?
+    redirect_to login_url
     end
+  end
 
-    def requie_admin
-      redirect_to root_url unless current_user.admin?
-    end
+  def require_admin
+    redirect_to root_url unless current_user.admin?
+  end
 end

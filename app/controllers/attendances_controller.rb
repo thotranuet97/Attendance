@@ -1,4 +1,6 @@
 class AttendancesController < ApplicationController
+  before_action :require_admin, only: :destroy
+
   def create
     datetime = Time.zone.now
     id = params[:attendances][:id]
@@ -20,5 +22,8 @@ class AttendancesController < ApplicationController
   end
 
   def destroy
+    @attend = Attendance.find_by(id: params[:id])
+    @attend.destroy
+    redirect_to admin_user_path(@attend.user_id)
   end
 end

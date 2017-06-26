@@ -1,0 +1,34 @@
+<% provide(:title, t(".title")) %>
+<%= link_to(t(".create_user"), new_admin_user_path) %>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th><%= t(".full_name") %></th>
+      <th><%= t(".nearest_attendance") %></th>
+      <th><%= t(".today") %></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= link_to(user.full_name, admin_user_path(user.id)) %></td>
+        <td><%= user.nearest_attendance %></td>
+        <td><%= user.today %></td>
+        <td>
+        <% if !user.admin? %>
+          <% if user.lock? %>
+            <%= link_to(t(".unlock"), admin_user_unlock_path(user.id),
+              method: :put,
+              data: {confirm: t(".confirm")}) %>
+          <% else %>
+            <%= link_to(t(".lock"), admin_user_lock_path(user.id),
+              method: :put,
+              data: {confirm: t(".confirm")}) %>
+          <% end %>
+        <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

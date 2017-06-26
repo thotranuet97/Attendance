@@ -1,0 +1,43 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse"
+        data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/"><%= t(".home") %></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+      <% if logged_in? %>
+        <li>
+          <%= link_to(t(".profile"), edit_user_path(current_user)) %>
+        </li>
+        <% if current_user.admin? %>
+        <li>
+          <a href="/admin/users"><%= t(".manage") %></a>
+        </li>
+        <% end %>
+      <% end %>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+      <% if logged_in? %>
+        <li class="full_name">
+          <%= t(".hi") %><%= current_user.full_name %>
+        </li>
+        <li>
+          <a href= "/logout"><span class="glyphicon glyphicon-log-out"></span>
+            <%= t(".log_out") %></a>
+        </li>
+      <% else %>
+        <li>
+          <a href="/login"><span class="glyphicon glyphicon-log-in"></span>
+            <%= t(".log_in") %></a>
+        </li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
