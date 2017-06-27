@@ -39,6 +39,27 @@ class User < ActiveRecord::Base
     update_attribute(:remember_digest, nil)
   end
 
+  def nearest_attendance
+    attendance = attendances.first
+    if attendance.nil?
+      ""
+    else
+      attendance.date
+    end
+  end
+
+  def today
+    time_now = Time.zone.now
+    attendance = Attendance.find_by(user_id: id, date: time_now)
+    if attendance.nil?
+      "Not attendance"
+    elsif attendance.time_out.present?
+      "Done"
+    else
+      "Attendanced"
+    end
+  end
+
   private
     def downcase_email
       self.email = email.downcase

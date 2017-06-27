@@ -1,14 +1,67 @@
 en:
+  admin:
+    users:
+      index:
+        confirm: "You sure?"
+        create_user: "Create new user"
+        delete: "Delete"
+        email: "Email"
+        full_name: "Full Name"
+        lock: "Lock"
+        nearest_attendance: "Nearest Attendance"
+        title: "Manager"
+        today: "Today"
+        unlock: "Unlock"
+      show:
+        April: "April"
+        attendances: "Attendances:"
+        August: "August"
+        date: "Date"
+        December: "December"
+        delete: "Delete"
+        edit: "Edit"
+        email: "Email:"
+        February: "February"
+        full_name: "Full Name:"
+        January: "January"
+        July: "July"
+        June: "June"
+        March: "March"
+        May: "May"
+        month: "Month:"
+        November: "November"
+        October: "October"
+        profile: "Profile:"
+        search: "Search"
+        September: "September"
+        time_in: "Time in"
+        time_out: "Time out"
+        year: "Year:"
+      new:
+        title: "Create user"
   controller:
+    admin:
+      users:
+        fail: "Fail"
+        success: "Success"
     attendances:
       fail: "Fail"
       success: "Success"
     logins:
+      lock: "Account was locked"
       invalid: "Invalid email/password combination"
       success: "Logged in successfully"
     users:
       fail: "Fail"
       success: "Success"
+  layouts:
+    header:
+      hi: "Hi, "
+      home: "Home"
+      log_in: "Log in"
+      log_out: "Log out"
+      manage: "Manage"
+      profile: "Profile"
   logins:
     new:
       remember_me: "Remember me on this computer"
@@ -24,15 +77,10 @@ en:
       done: "Done."
       finish: "Finish"
       start: "Start"
-    index:
-      confirm: "You sure?"
-      create_user: "Create new user"
-      delete: "Delete"
-      email: "Email"
-      full_name: "Full Name"
-      title: "Manager"
-    new:
-      title: "Create user"
+    edit:
+      header_update: "Update your profile"
+      save: "Save changes"
+      title: "Edit user"
     show:
       admin: "Manage User"
       logout: "Log out"

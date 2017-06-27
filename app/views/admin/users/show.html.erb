@@ -1,0 +1,65 @@
+<h3><%= t(".profile") %></h3>
+<div>
+  <label><%= t(".full_name") %></label>
+  <%= @user.full_name %>
+</div>
+<div>
+  <label><%= t(".email") %></label>
+  <%= @user.email %>
+</div>
+<h3><%= t(".attendances") %></h3>
+<%= form_for(:date, url: admin_user_path, method: :get) do |f| %>
+  <label><%= t(".year") %></label>
+  <%= f.select(:year, options_for_select(
+    [
+      ["2017", 2017],
+      ["2016", 2016]
+    ], @year
+  ))
+  %>
+  <label><%= t(".month") %></label>
+  <%= f.select(:month, options_for_select(
+    [
+      [t(".January"), 1],
+      [t(".February"), 2],
+      [t(".March"), 3],
+      [t(".April"), 4],
+      [t(".May"), 5],
+      [t(".June"), 6],
+      [t(".July"), 7],
+      [t(".August"), 8],
+      [t(".September"), 9],
+      [t(".October"), 10],
+      [t(".November"), 11],
+      [t(".December"), 12]
+    ], @month
+  ))
+  %>
+  <%= f.submit t(".search"), class: "btn btn-primary" %>
+<% end %>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th><%= t(".date") %></th>
+      <th><%= t(".time_in") %></th>
+      <th><%= t(".time_out") %></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @attendances.each do |attend| %>
+      <tr>
+        <td><%= attend.date %></td>
+        <td><%= attend.time_in.strftime("%H:%M:%S") %></td>
+        <td>
+        <% if attend.time_out.present? %>
+          <%= attend.time_out.strftime("%H:%M:%S") %>
+        <% end %>
+        </td>
+        <td><%= link_to(t(".delete"), attend, method: :delete) %> |
+          <%= link_to(t(".edit"), "#") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

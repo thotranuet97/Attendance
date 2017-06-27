@@ -8,10 +8,15 @@ class LoginsController < ApplicationController
   def create
     user = User.find_by(user_name: params[:login][:user_name])
     if user && user.authenticate(params[:login][:password])
-      log_in user
-      params[:login][:remember_me] == "1" ? remember(user) : forget(user)
-      flash[:success] = t("controller.logins.success")
-      redirect_to user_url(user)
+      if user.lock?
+        flash.now[:danger] = t("controller.logins.lock")
+        render :new
+      else
+        log_in user
+        params[:login][:remember_me] == "1" ? remember(user) : forget(user)
+        flash[:success] = t("controller.logins.success")
+        redirect_to user_url(user)
+      end
     else
       flash.now[:danger] = t("controller.logins.invalid")
       render :new
