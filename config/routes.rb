@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   post "/login" => "logins#create"
   get "/logout" => "logins#destroy"
   resources :users, only: [:show, :edit, :update]
-  resources :attendances, only: [:create, :destroy]
+  resources :attendances, only: [:create, :update, :destroy]
   namespace :admin do
     resources :users do
       put "lock"

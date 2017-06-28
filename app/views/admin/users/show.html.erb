@@ -1,3 +1,4 @@
+<% provide(:title, t(".title")) %>
 <h3><%= t(".profile") %></h3>
 <div>
   <label><%= t(".full_name") %></label>
@@ -47,19 +48,57 @@
     </tr>
   </thead>
   <tbody>
-    <% @attendances.each do |attend| %>
+    <% @attendances.each do |attendance| %>
       <tr>
-        <td><%= attend.date %></td>
-        <td><%= attend.time_in.strftime("%H:%M:%S") %></td>
+        <td><%= attendance.date %></td>
+        <td><%= attendance.time_in.strftime("%H:%M") %></td>
         <td>
-        <% if attend.time_out.present? %>
-          <%= attend.time_out.strftime("%H:%M:%S") %>
+        <% if attendance.time_out.present? %>
+          <% time_out = attendance.time_out.strftime("%H:%M") %>
+        <% else %>
+          <% time_out = "" %>
         <% end %>
+        <%= time_out %>
         </td>
-        <td><%= link_to(t(".delete"), attend, method: :delete) %> |
-          <%= link_to(t(".edit"), "#") %></td>
+        <td>
+          <%= link_to(t(".delete"), attendance_path(id: attendance.id, year: @year,
+            month: @month), method: :delete, data: {confirm: t(".confirm")}) %> |
+          <%= link_to(t(".edit"), "#attendanceModal" , onclick: "showModal(this)",
+            data: {id: attendance.id,
+              date: attendance.date.strftime("%Y-%m-%d"),
+              time_in: attendance.time_in.strftime("%H:%M"),
+              time_out: time_out}, "data-toggle" => "modal"
+            ) %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
+<div class="modal fade" id="attendanceModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><%= t(".edit_attendance") %></h4>
+      </div>
+      <%= form_for(:attendance, url: "#", method: :put,
+        :html=> {:id => "form-attendance"}) do |f| %>
+        <div class="modal-body">
+          <%= render "shared/error_messages" %>
+          <%= f.hidden_field :year, value: @year %>
+          <%= f.hidden_field :month, value: @month %>
+          <%= f.label :date %>
+          <%= f.date_field :date, class: "form-control date-attendance" %>
+          <%= f.label :time_in %>
+          <%= f.time_field :time_in, class: "form-control time-in-attendance" %>
+          <%= f.label :time_out %>
+          <%= f.time_field :time_out, class: "form-control time-out-attendance" %>
+        </div>
+        <div class="modal-footer">
+          <%= f.submit t(".save"), class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

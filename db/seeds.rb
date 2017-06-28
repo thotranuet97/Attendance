@@ -1,17 +1,17 @@
-User.create(user_name: "ngoctrunght19",
-  email: "ngoctrunght19@gmail.com",
-  full_name: "Nguyen Ngoc Trung",
-  password: "trung123",
+User.create(user_name: "admin",
+  email: "admin@gmail.com",
+  full_name: "admin",
+  password: "123456",
   admin: true)
 
 9.times do |i|
-  user_name = "example" + (i+1).to_s
-  email = "example" + (i+1).to_s + "@gmail.com"
-  full_name = "Nguyen Ngoc Trung" + (i+1).to_s
+  user_name = "user" + (i+1).to_s
+  email = "user" + (i+1).to_s + "@gmail.com"
+  full_name = "user " + (i+1).to_s
   User.create(user_name: user_name,
     email: email,
     full_name: full_name,
-    password: "trung123")
+    password: "123456")
 end
 
 User.all.each do |user|
