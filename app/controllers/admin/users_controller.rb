@@ -15,7 +15,7 @@ class Admin::UsersController < ApplicationController
       @year = params[:date][:year]
       @month = params[:date][:month]
     end
-    @attendances = Attendance.get_attendances_this_month(@user, @year, @month)
+    @attendances = Attendance.get_attendances(@user, @year, @month)
   end
 
   def new

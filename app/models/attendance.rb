@@ -4,13 +4,19 @@ class Attendance < ActiveRecord::Base
   default_scope -> {order(date: :desc)}
 
   validates :user_id, presence: true
-  validates :date, presence: true
+  validates :date, presence: true, uniqueness: {scope: :user_id}
   validates :time_in, presence: true
+  validate :time_in_time_out
 
-  def Attendance.get_attendances_this_month(user, year, month)
+  def Attendance.get_attendances(user, year, month)
     where("user_id = ? and
       extract(year from date) = ? and
       extract(month from date) = ?", user.id, year, month)
   end
 
+  def time_in_time_out
+    if time_out.present?
+      errors.add(:base, "Time in later then time out") if time_in > time_out
+    end
+  end
 end

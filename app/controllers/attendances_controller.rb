@@ -21,9 +21,28 @@ class AttendancesController < ApplicationController
     end
   end
 
+  def update
+    attendance = Attendance.find_by(id: params[:id])
+    if attendance.update_attributes(attendance_params)
+      flash[:success] = t("controller.attendances.success")
+      redirect_to admin_user_path(attendance.user_id,
+        date: {year: params[:attendance][:year], month: params[:attendance][:month]})
+    else
+      flash[:danger] = t("controller.attendances.fail")
+      redirect_to admin_user_path(attendance.user_id,
+        date: {year: params[:attendance][:year], month: params[:attendance][:month]})
+    end
+  end
+
   def destroy
-    @attend = Attendance.find_by(id: params[:id])
-    @attend.destroy
-    redirect_to admin_user_path(@attend.user_id)
+    attendance = Attendance.find_by(id: params[:id])
+    attendance.destroy
+    redirect_to admin_user_path(attendance.user_id, date: {year: params[:year],
+      month: params[:month]})
+  end
+
+  private
+  def attendance_params
+    params.require(:attendance).permit(:date, :time_in, :time_out)
   end
 end
