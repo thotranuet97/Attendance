@@ -1,13 +1,6 @@
-class UsersController < ApplicationController
+class ChangePasswordsController < ApplicationController
   before_action :logged_in_user
-  before_action :changed_update
-  before_action :correct_user, only: [:show, :edit, :update]
-
-  def show
-    @user = User.find_by(id: params[:id])
-    time_now = Time.zone.now
-    @attendance = Attendance.find_by(user_id: @user.id, date: time_now)
-  end
+  before_action :correct_user
 
   def edit
     @user = User.find_by(id: params[:id])
@@ -26,7 +19,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:full_name, :email, :password,
-      :password_confirmation)
+    params.require(:user).permit(:password, :password_confirmation)
+      .merge(first_password: false)
   end
 end

@@ -43,14 +43,23 @@ en:
         year: "Year:"
       new:
         title: "Create user"
+  change_passwords:
+    edit:
+      save: "Save"
+      title: "Change password"
   controller:
     admin:
       users:
         fail: "Fail"
         success: "Success"
+    application:
+      change_password: "Please change password"
     attendances:
       fail: "Fail"
       success: "Success"
+    change_passwords:
+      fail: "Fail"
+      success: "Change password success"
     logins:
       lock: "Account was locked"
       invalid: "Invalid email/password combination"
@@ -70,6 +79,7 @@ en:
     new:
       remember_me: "Remember me on this computer"
       title: "Log in"
+      user/email: "Username/Email"
   shared:
     error_messages:
       error: "error"
@@ -89,5 +99,12 @@ en:
       admin: "Manage User"
       logout: "Log out"
       title: "Details"
+  user_mailer:
+    welcome_user:
+      click: "Click here"
+      email: "Email:"
+      hi: "Hi,"
+      password: "Password:"
+      user_name: "Username:"
 
 
