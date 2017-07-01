@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+  </head>
+  <body>
+    <h1><%= t(".hi") %> <%= @user.full_name %></h1>
+    <p>
+      <%= t(".user_name") %> <%= @user.user_name %>
+    </p>
+    <p>
+      <%= t(".email") %> <%= @user.email %>
+    </p>
+    <p>
+      <%= t(".password") %> <%= Settings.default_password %>
+    </p>
+    <p>
+      <%= link_to(t(".click"), root_url) %> to login
+    </p>
+  </body>
+</html>

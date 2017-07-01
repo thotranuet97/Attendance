@@ -8,6 +8,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :remember_digest
       t.boolean :admin, default: false
       t.boolean :lock, default: false
+      t.boolean :first_password, default: true
 
       t.timestamps null: false
     end

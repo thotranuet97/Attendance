@@ -25,6 +25,7 @@ class Admin::UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      UserMailer.welcome_user(@user).deliver
       flash[:success] = t("controller.users.success")
       redirect_to admin_users_url
     else
@@ -58,7 +59,7 @@ class Admin::UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:full_name, :user_name, :email,
-      :password, :password_confirmation)
+    params.require(:user).permit(:full_name, :user_name, :email)
+      .merge(password: Settings.default_password)
   end
 end

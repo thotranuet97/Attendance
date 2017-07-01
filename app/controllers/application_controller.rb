@@ -16,4 +16,16 @@ class ApplicationController < ActionController::Base
   def require_admin
     redirect_to root_url unless current_user.admin?
   end
+
+  def correct_user
+    @user = User.find_by(id: params[:id])
+    redirect_to(root_url) unless current_user?(@user)
+  end
+
+  def changed_update
+    if current_user.first_password? && !current_user.admin?
+      flash[:danger] = t("controller.application.change_password")
+      redirect_to edit_change_password_url(current_user)
+    end
+  end
 end

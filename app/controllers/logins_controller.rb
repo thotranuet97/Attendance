@@ -6,7 +6,8 @@ class LoginsController < ApplicationController
   end
 
   def create
-    user = User.find_by(user_name: params[:login][:user_name])
+    user = User.find_by(user_name: params[:login][:user_name]) ||
+      User.find_by(email: params[:login][:user_name])
     if user && user.authenticate(params[:login][:password])
       if user.lock?
         flash.now[:danger] = t("controller.logins.lock")

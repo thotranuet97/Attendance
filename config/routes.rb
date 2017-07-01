@@ -11,5 +11,5 @@ Rails.application.routes.draw do
       put "unlock"
     end
   end
-
+  resources :change_passwords, only: [:edit, :update]
 end
