@@ -9,13 +9,16 @@ class Admin::UsersController < ApplicationController
   def show
     @user = User.find_by(id: params[:id])
     time_now = Time.zone.now
-    @year = time_now.year
-    @month = time_now.month
-    if params[:date].present?
-      @year = params[:date][:year]
-      @month = params[:date][:month]
-    end
-    @attendances = Attendance.get_attendances(@user, @year, @month)
+    @this_month = time_now.strftime("%Y-%m")
+    @attendances = {}
+    @data = {}
+    @user.attendances.each{|x|
+      time_in = x.time_in.strftime("%H:%M")
+      time_out = x.time_out.nil? ? "?" : x.time_out.strftime("%H:%M")
+      @attendances[x.date.to_s] = {number: "#{time_in} - #{time_out}"}
+      @data[x.date.to_s] = {id: x.id, time_in: time_in, time_out: time_out}
+    }
+
   end
 
   def new

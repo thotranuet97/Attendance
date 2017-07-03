@@ -1,35 +1,12 @@
-@import "bootstrap-sprockets";
-@import "bootstrap";
-
-input {
-  margin-bottom: 5px;
-}
-
-.checkbox {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  span {
-    margin-left: 20px;
-    font-weight: normal;
-  }
-}
-
-#login_remember_me {
-  width: auto;
-  margin-left: 0;
-}
-
-li.full_name {
-  padding: 15px;
-  color: white;
-}
-
 .submit-attendance {
-  position: absolute;
-  height: 200px;
+  height: 100px;
   width: 200px;
-  border-radius: 50%;
   font-size: -webkit-xxx-large;
-  top: 40%;
-  right: 45%;
+}
+
+div.alert-absolute {
+  position: absolute;
+  right: 2px;
+  top: 52px;
+  z-index: 10
 }

@@ -1,50 +1,39 @@
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse"
-        data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="/"><%= t(".home") %></a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
+<header class="main-header">
+  <a href="/" data-turbolinks="false" class="logo">
+    <span class="logo-lg"><b><%= t(".home") %></b></span>
+  </a>
+  <nav class="navbar navbar-static-top">
+    <div class="navbar-custom-menu">
       <ul class="nav navbar-nav">
-      <% if logged_in? %>
-        <% if current_user.admin? %>
-        <li>
-          <a href="/admin/users"><%= t(".manage") %></a>
-        </li>
-        <% end %>
-      <% end %>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-      <% if logged_in? %>
-        <li class="full_name">
-          <%= current_user.full_name %>
-        </li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            Account <span class=" caret"></span>
-          </a>
-          <ul class="dropdown-menu">
-            <li>
-              <%= link_to(t(".profile"), edit_user_path(current_user)) %>
-            </li>
-            <li>
-              <a href= "/logout"><span class="glyphicon glyphicon-log-out"></span>
-                <%= t(".log_out") %></a>
-            </li>
-          </ul>
-        </li>
-      <% else %>
-        <li>
-          <a href="/login"><span class="glyphicon glyphicon-log-in"></span>
-            <%= t(".log_in") %></a>
-        </li>
-      <% end %>
+        <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <img src=<%= image_url("user2-160x160.jpg") %>
+                class="user-image" alt="User Image">
+              <span class="hidden-xs"><%= current_user.full_name %></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="user-header">
+                <img src=<%= image_url("user2-160x160.jpg") %>
+                  class="img-circle" alt="User Image">
+                <p>
+                  <%= current_user.full_name %>
+                  <small><%= current_user.email %></small>
+                </p>
+              </li>
+              <li class="user-footer">
+                <div class="pull-left">
+                  <a href=<%= edit_user_path(current_user) %> data-turbolinks="false"
+                    class="btn btn-default btn-flat"><%= t(".profile") %></a>
+                </div>
+                <div class="pull-right">
+                  <a href="/logout" class="btn btn-default btn-flat">
+                    <%= t(".log_out") %>
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </li>
       </ul>
     </div>
-  </div>
-</nav>
+  </nav>
+</header>
