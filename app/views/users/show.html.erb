@@ -1,6 +1,44 @@
 <% provide(:title, t(".title")) %>
-<div class="row">
-  <% if current_user?(@user) %>
-    <%= render "attendance" %>
-  <% end %>
-</div>
+<section class="content-header">
+</section>
+<section class="content">
+  <div class="row">
+    <div class="col-md-5">
+      <%= render "attendance" %>
+    </div>
+    <div class="col-md-7">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h4 class="box-title"><%= t(".calendar") %></h4>
+        </div>
+        <div class="box-body">
+          <div class="responsive-calendar">
+            <div class="controls">
+                <a class="pull-left" data-go="prev"><div class="btn btn-primary">Prev</div></a>
+                <h4><span data-head-year></span> <span data-head-month></span></h4>
+                <a class="pull-right" data-go="next"><div class="btn btn-primary">Next</div></a>
+            </div><hr/>
+            <div class="day-headers">
+              <div class="day header"><%= t(".mon") %></div>
+              <div class="day header"><%= t(".tue") %></div>
+              <div class="day header"><%= t(".wed") %></div>
+              <div class="day header"><%= t(".thu") %></div>
+              <div class="day header"><%= t(".fri") %></div>
+              <div class="day header"><%= t(".sat") %></div>
+              <div class="day header"><%= t(".sun") %></div>
+            </div>
+            <div class="days" data-group="days">
+            </div>
+          </div>
+          <script type="text/javascript">
+            $(document).ready(function () {
+              var thisMonth = "<%= @this_month %>";
+              showAttendanceOnCalendar(thisMonth,
+                <%= raw @attendances.to_json %>);
+            });
+          </script>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

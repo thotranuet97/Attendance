@@ -8,19 +8,26 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-
-<%= render "layouts/header" %>
-
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      <% flash.each do |message_type, message| %>
-        <div class="alert alert-<%= message_type %>"><%= message %></div>
-      <% end %>
-    </div>
+<% if logged_in? %>
+<body class="hold-transition skin-blue sidebar-mini">
+  <div class="alert-absolute">
+    <% flash.each do |message_type, message| %>
+      <div class="alert alert-<%= message_type %> alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <i class="icon fa fa-ban"></i> <%= message %>
+      </div>
+    <% end %>
   </div>
-  <%= yield %>
-</div>
+  <div class="wrapper">
+    <%= render "layouts/header" %>
+    <%= render "layouts/sidebar" %>
+    <div class="content-wrapper">
+      <%= yield %>
+    </div>
+    <%= render "layouts/footer" %>
+  </div>
 </body>
+<% else %>
+  <%= yield %>
+<% end %>
 </html>

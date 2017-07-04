@@ -1,8 +1,6 @@
 source "https://rubygems.org"
 
 gem "rails", "4.2.8"
-gem "font-awesome-rails"
-gem "ionicons-rails"
 gem "config"
 gem "bcrypt", "3.1.11"
 gem "bootstrap-sass", "3.3.7"

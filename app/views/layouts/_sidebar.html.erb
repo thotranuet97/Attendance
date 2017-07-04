@@ -1,0 +1,16 @@
+<aside class="main-sidebar">
+  <section class="sidebar">
+    <ul class="sidebar-menu" data-widget="tree">
+      <% if current_user.admin? %>
+        <li class="header"><%= t(".admin") %></li>
+        <li><%= link_to(t(".create_user"), new_admin_user_path,
+          data: {turbolinks: false}) %></li>
+        <li>
+          <a href="/admin/users" data-turbolinks="false">
+            <%= t(".manage_user") %>
+          </a>
+        </li>
+      <% end %>
+    </ul>
+  </section>
+</aside>

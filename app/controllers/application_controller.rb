@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
     redirect_to(root_url) unless current_user?(@user)
   end
 
-  def changed_update
+  def require_change_password
     if current_user.first_password? && !current_user.admin?
       flash[:danger] = t("controller.application.change_password")
       redirect_to edit_change_password_url(current_user)
