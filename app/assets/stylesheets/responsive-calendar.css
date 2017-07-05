@@ -22,7 +22,7 @@
   color: #000000;
   display: block;
   cursor: pointer;
-  padding: 20% 0 20% 0;
+  padding: 55% 0 5% 0;
 }
 .responsive-calendar .day a:hover {
   background-color: #eee;
@@ -50,7 +50,34 @@
 }
 .responsive-calendar .day .badge {
   position: absolute;
-  top: 2px;
-  right: 2px;
+  top: 0px;
+  left: 0px;
   z-index: 1;
+}
+
+.badge {
+  padding: 3px 7px;
+  font-size: 14px;
+  border-radius: 0px;
+}
+
+@media (min-width: 1200px) {
+  .badge {
+    padding: 5px 10px;
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 600px) {
+  .badge {
+    padding: 3px 5px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 400px) {
+  .badge {
+    padding: 3px 3px;
+    font-size: 8px;
+  }
 }

@@ -23,7 +23,7 @@ function showModal(data) {
     $(".date-attendance").val(date);
     $(".time-in-attendance").val(data[date].time_in);
     $(".time-out-attendance").val(data[date].time_out);
-    $("#form-attendance").attr("action", "/attendances/" + data[date].id);
-    $(".delete-attendance").attr("href", "/attendances/" + data[date].id);
+    $("#form-attendance").attr("action", "/admin/attendances/" + data[date].id);
+    $(".delete-attendance").attr("href", "/admin/attendances/" + data[date].id);
   });
 };
