@@ -9,23 +9,23 @@
   <%= csrf_meta_tags %>
 </head>
 <% if logged_in? %>
-<body class="hold-transition skin-blue sidebar-mini">
-  <div class="alert-absolute">
-    <% flash.each do |message_type, message| %>
-      <div class="alert alert-<%= message_type %> alert-dismissible">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-        <i class="icon fa fa-ban"></i> <%= message %>
-      </div>
-    <% end %>
-  </div>
-  <div class="wrapper">
-    <%= render "layouts/header" %>
-    <div class="content-wrapper">
-      <%= yield %>
+  <body class="hold-transition skin-blue sidebar-mini">
+    <div class="alert-absolute">
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %> alert-dismissible">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+          <i class="icon fa fa-ban"></i> <%= message %>
+        </div>
+      <% end %>
     </div>
-    <%= render "layouts/footer" %>
-  </div>
-</body>
+    <div class="wrapper">
+      <%= render "layouts/header" %>
+      <div class="content-wrapper">
+        <%= yield %>
+      </div>
+      <%= render "layouts/footer" %>
+    </div>
+  </body>
 <% else %>
   <%= yield %>
 <% end %>

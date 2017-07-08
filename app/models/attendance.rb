@@ -8,12 +8,6 @@ class Attendance < ActiveRecord::Base
   validates :time_in, presence: true
   validate :time_in_time_out
 
-  def Attendance.get_attendances(user, year, month)
-    where("user_id = ? and
-      extract(year from date) = ? and
-      extract(month from date) = ?", user.id, year, month)
-  end
-
   def time_in_time_out
     if time_out.present?
       errors.add(:base, "Time in later than time out") if time_in > time_out
