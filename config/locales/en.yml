@@ -69,16 +69,14 @@ en:
       copyright: "Copyright © 2017"
       version: "Version 1.0.0"
     header:
+      create_user: "Create User"
       hi: "Hi, "
       home: "Home"
       log_in: "Log in"
       log_out: "Log out"
       manage: "Manage"
+      manage_user: "Manage Users"
       profile: "Profile"
-    sidebar:
-      admin: "ADMIN"
-      create_user: "Create User"
-      manage_user: "Manage User"
   logins:
     new:
       app_name: "App 8hsang"

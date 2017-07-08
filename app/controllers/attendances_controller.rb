@@ -1,45 +1,29 @@
 class AttendancesController < ApplicationController
-  before_action :require_admin, only: :destroy
+  before_action :logged_in_user
+  before_action :require_change_password
 
   def create
     datetime = Time.zone.now
-    id = params[:attendances][:id]
-    if id.present?
-      attendance = Attendance.find_by(id: id)
-      attendance.update_attribute(:time_out, datetime)
+    attendance = current_user.attendances.build(date: datetime, time_in: datetime)
+    if attendance.save
       flash[:success] = t("controller.attendances.success")
       redirect_to current_user
     else
-      attendance = current_user.attendances.build(date: datetime, time_in: datetime)
-      if attendance.save
-        flash[:success] = t("controller.attendances.success")
-        redirect_to current_user
-      else
-        flash.now[:danger] = t("controller.attendances.fail")
-        render current_user
-      end
+      flash[:danger] = t("controller.attendances.fail")
+      redirect_to current_user
     end
   end
 
   def update
-    attendance = Attendance.find_by(id: params[:id])
-    if attendance.update_attributes(attendance_params)
+    datetime = Time.zone.now
+    attendance = Attendance.find_by(user_id: current_user.id, date: datetime)
+    if attendance.time_out.present?
+      flash[:danger] = t("controller.attendances.fail")
+    elsif attendance.update_attribute(:time_out, datetime)
       flash[:success] = t("controller.attendances.success")
-      redirect_to admin_user_path(attendance.user_id)
     else
       flash[:danger] = t("controller.attendances.fail")
-      redirect_to admin_user_path(attendance.user_id)
     end
-  end
-
-  def destroy
-    attendance = Attendance.find_by(id: params[:id])
-    attendance.destroy
-    redirect_to admin_user_path(attendance.user_id)
-  end
-
-  private
-  def attendance_params
-    params.require(:attendance).permit(:date, :time_in, :time_out)
+    redirect_to current_user
   end
 end

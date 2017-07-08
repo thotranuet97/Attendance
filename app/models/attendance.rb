@@ -16,7 +16,7 @@ class Attendance < ActiveRecord::Base
 
   def time_in_time_out
     if time_out.present?
-      errors.add(:base, "Time in later then time out") if time_in > time_out
+      errors.add(:base, "Time in later than time out") if time_in > time_out
     end
   end
 end

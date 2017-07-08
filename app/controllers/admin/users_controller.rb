@@ -15,7 +15,7 @@ class Admin::UsersController < ApplicationController
     @user.attendances.each{|x|
       time_in = x.time_in.strftime("%H:%M")
       time_out = x.time_out.nil? ? "?" : x.time_out.strftime("%H:%M")
-      @attendances[x.date.to_s] = {number: "#{time_in} - #{time_out}"}
+      @attendances[x.date.to_s] = {number: "#{time_in}<br>#{time_out}".html_safe}
       @data[x.date.to_s] = {id: x.id, time_in: time_in, time_out: time_out}
     }
 

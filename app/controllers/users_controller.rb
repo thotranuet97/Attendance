@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     @user.attendances.each{|x|
       time_in = x.time_in.strftime("%H:%M")
       time_out = x.time_out.nil? ? "?" : x.time_out.strftime("%H:%M")
-      @attendances[x.date.to_s] = {number: "#{time_in} - #{time_out}"}
+      @attendances[x.date.to_s] = {number: "#{time_in}<br>#{time_out}".html_safe}
     }
     @attendance = Attendance.find_by(user_id: @user.id, date: time_now)
   end
