@@ -79,7 +79,7 @@ en:
       profile: "Profile"
   logins:
     new:
-      app_name: "App 8hsang"
+      app_name: "<b>8h</b>"
       remember_me: "Remember Me"
       title: "Log in"
       title_login: "Log in to start your session"
@@ -104,7 +104,7 @@ en:
       header_update: "Update your profile"
       save: "Save changes"
       title: "Edit user"
-    show:
+    index:
       admin: "Manage User"
       calendar: "Calendar"
       fri: "Fri"

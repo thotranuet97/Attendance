@@ -7,10 +7,10 @@ class AttendancesController < ApplicationController
     attendance = current_user.attendances.build(date: datetime, time_in: datetime)
     if attendance.save
       flash[:success] = t("controller.attendances.success")
-      redirect_to current_user
+      redirect_to users_path
     else
       flash[:danger] = t("controller.attendances.fail")
-      redirect_to current_user
+      redirect_to users_path
     end
   end
 
@@ -24,6 +24,6 @@ class AttendancesController < ApplicationController
     else
       flash[:danger] = t("controller.attendances.fail")
     end
-    redirect_to current_user
+    redirect_to users_path
   end
 end

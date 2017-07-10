@@ -59,6 +59,7 @@
   padding: 3px 3px;
   font-size: 8px;
   border-radius: 0;
+  color: white
 }
 
 @media (min-width: 400px) {

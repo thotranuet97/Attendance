@@ -1,7 +1,7 @@
 class LoginsController < ApplicationController
   def new
     if logged_in?
-      redirect_to user_url(current_user)
+      redirect_to users_path
     end
   end
 
@@ -16,7 +16,7 @@ class LoginsController < ApplicationController
         log_in user
         params[:login][:remember_me] == "1" ? remember(user) : forget(user)
         flash[:success] = t("controller.logins.success")
-        redirect_to user_url(user)
+        redirect_to users_path
       end
     else
       flash.now[:danger] = t("controller.logins.invalid")
