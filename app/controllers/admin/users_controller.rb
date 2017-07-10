@@ -18,7 +18,6 @@ class Admin::UsersController < ApplicationController
       @attendances[x.date.to_s] = {number: "#{time_in}<br>#{time_out}".html_safe}
       @data[x.date.to_s] = {id: x.id, time_in: time_in, time_out: time_out}
     }
-
   end
 
   def new
