@@ -50,34 +50,34 @@
 }
 .responsive-calendar .day .badge {
   position: absolute;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
   z-index: 1;
 }
 
 .badge {
-  padding: 3px 7px;
-  font-size: 14px;
-  border-radius: 0px;
+  padding: 3px 3px;
+  font-size: 8px;
+  border-radius: 0;
 }
 
-@media (min-width: 1200px) {
-  .badge {
-    padding: 5px 10px;
-    font-size: 17px;
-  }
-}
-
-@media (max-width: 600px) {
+@media (min-width: 400px) {
   .badge {
     padding: 3px 5px;
     font-size: 10px;
   }
 }
 
-@media (max-width: 400px) {
+@media (min-width: 600px) {
   .badge {
-    padding: 3px 3px;
-    font-size: 8px;
+    padding: 3px 7px;
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .badge {
+    padding: 5px 10px;
+    font-size: 17px;
   }
 }
