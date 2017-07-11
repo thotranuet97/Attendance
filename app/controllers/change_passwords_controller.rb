@@ -3,11 +3,9 @@ class ChangePasswordsController < ApplicationController
   before_action :correct_user
 
   def edit
-    @user = User.find_by(id: params[:id])
   end
 
   def update
-    @user = User.find_by(id: params[:id])
     if @user.update_attributes(user_params)
       flash[:success] = t("controller.users.success")
       redirect_to user_path

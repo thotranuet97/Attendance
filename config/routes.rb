@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get "/login" => "logins#new"
   post "/login" => "logins#create"
   get "/logout" => "logins#destroy"
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:index, :edit, :update]
   resources :attendances, only: [:create, :update]
   namespace :admin do
     resources :users do
@@ -13,4 +13,5 @@ Rails.application.routes.draw do
     resources :attendances, only: [:update, :destroy]
   end
   resources :change_passwords, only: [:edit, :update]
+  get "*path" => redirect("/")
 end

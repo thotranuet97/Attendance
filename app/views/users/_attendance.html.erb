@@ -27,7 +27,8 @@
   </div>
   <div class="row">
     <div class="col-xs-6 col-xs-offset-3">
-      <%= form_for(:attendances, url: attendance_path, method: :put) do |f| %>
+      <%= form_for(:attendances, url: attendance_path(current_user),
+        method: :put) do |f| %>
         <%= f.submit t(".finish"), class: "btn btn-primary submit-attendance btn-block",
           data: {confirm: t(".confirm")} %>
       <% end %>
