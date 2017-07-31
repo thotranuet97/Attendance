@@ -1,14 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Tamgiosang</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <title><%= yield(:title) %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <%= stylesheet_link_tag "application", media: "all",
+    "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-
-<%= yield %>
-
-</body>
+<% if logged_in? %>
+  <body class="hold-transition skin-blue sidebar-mini">
+    <div class="alert-absolute">
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %> alert-dismissible">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+          <i class="icon fa fa-ban"></i> <%= message %>
+        </div>
+      <% end %>
+    </div>
+    <div class="wrapper">
+      <%= render "layouts/header" %>
+      <div class="content-wrapper">
+        <%= yield %>
+      </div>
+      <%= render "layouts/footer" %>
+    </div>
+  </body>
+<% else %>
+  <%= yield %>
+<% end %>
 </html>

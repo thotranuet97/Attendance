@@ -1,0 +1,4 @@
+max_name: 50
+max_email: 255
+min_password: 6
+default_password: "123456"

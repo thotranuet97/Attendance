@@ -1,23 +1,127 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  admin:
+    users:
+      index:
+        confirm: "You sure?"
+        create_user: "Create new user"
+        delete: "Delete"
+        email: "Email"
+        full_name: "Full Name"
+        lock: "Lock"
+        nearest_attendance: "Nearest Attendance"
+        title: "Manager User"
+        today: "Today"
+        unlock: "Unlock"
+        id: "ID"
+      show:
+        attendances: "Attendances:"
+        calendar: "Calendar"
+        confirm: "You sure?"
+        date: "Date"
+        delete: "Delete"
+        edit: "Edit"
+        edit_attendance: "Edit attendance"
+        email: "Email:"
+        fri: "Fri"
+        full_name: "Full Name:"
+        mon: "Mon"
+        month: "Month:"
+        sat: "Sat"
+        save: "Save"
+        search: "Search"
+        sun: "Sun"
+        thu: "Thu"
+        time_in: "Time in"
+        time_out: "Time out"
+        title: "Attendance statistics"
+        tue: "Tue"
+        user_profile: "User Profile"
+        wed: "Wed"
+        year: "Year:"
+      new:
+        title: "Create user"
+  change_passwords:
+    edit:
+      save: "Save"
+      title: "Change password"
+  controller:
+    admin:
+      users:
+        fail: "Fail"
+        success: "Success"
+    application:
+      change_password: "Please change password"
+    attendances:
+      fail: "Fail"
+      success: "Success"
+    change_passwords:
+      fail: "Fail"
+      success: "Change password success"
+    logins:
+      lock: "Account was locked"
+      invalid: "Invalid email/password combination"
+      success: "Logged in successfully"
+    users:
+      fail: "Fail"
+      success: "Success"
+  layouts:
+    footer:
+      copyright: "Copyright © 2017"
+      version: "Version 1.0.0"
+    header:
+      create_user: "Create User"
+      hi: "Hi, "
+      home: "Home"
+      log_in: "Log in"
+      log_out: "Log out"
+      manage: "Manage"
+      manage_user: "Manage Users"
+      profile: "Profile"
+  logins:
+    new:
+      app_name: "<b>8h</b>"
+      remember_me: "Remember Me"
+      title: "Log in"
+      title_login: "Log in to start your session"
+      user/email: "Username/Email"
+  shared:
+    error_messages:
+      error: "error"
+      the_form_contains: "The form contains"
+  users:
+    attendance:
+      attendance: "Attendance:"
+      attendance_today: "Attendance today"
+      no_attendance: "No Attendance!"
+      attendanced: "Attendanced!"
+      confirm: "You sure?"
+      done: "Done!"
+      finish: "Finish"
+      start: "Start"
+      time_in: "Time in:"
+      time_out: "Time out:"
+    edit:
+      header_update: "Update your profile"
+      save: "Save changes"
+      title: "Edit user"
+    index:
+      admin: "Manage User"
+      calendar: "Calendar"
+      fri: "Fri"
+      logout: "Log out"
+      mon: "Mon"
+      sat: "Sat"
+      sun: "Sun"
+      thu: "Thu"
+      title: "Details"
+      tue: "Tue"
+      wed: "Wed"
+  user_mailer:
+    welcome_user:
+      click: "Click here"
+      email: "Email:"
+      hi: "Hi,"
+      password: "Password:"
+      user_name: "Username:"
+
+

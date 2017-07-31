@@ -1,0 +1,44 @@
+<header class="main-header">
+  <a href="/" data-turbolinks="false" class="logo">
+    <span class="logo-lg"><b><%= t(".home") %></b></span>
+  </a>
+  <nav class="navbar navbar-static-top">
+    <div class="navbar-custom-menu">
+      <ul class="nav navbar-nav">
+        <li class="dropdown user user-menu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <img src=<%= image_url("user2-160x160.jpg") %>
+              class="user-image" alt="User Image">
+            <span class="hidden-xs"><%= current_user.full_name %></span>
+          </a>
+          <ul class="dropdown-menu">
+            <% if current_user.admin? %>
+              <li>
+                <%= link_to(t(".create_user"), new_admin_user_path,
+                      data: {turbolinks: false},
+                      class: "btn") %>
+              </li>
+              <li>
+                <a href="/admin/users" data-turbolinks="false"
+                  class="btn">
+                  <%= t(".manage_user") %>
+                </a>
+              </li>
+            <% end %>
+            <li>
+              <a href=<%= edit_user_path(current_user) %>
+                data-turbolinks="false" class="btn">
+                <%= t(".profile") %>
+              </a>
+            </li>
+            <li>
+              <a href="/logout" class="btn">
+                <%= t(".log_out") %>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
