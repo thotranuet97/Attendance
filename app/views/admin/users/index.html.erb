@@ -1,6 +1,7 @@
 <% provide(:title, t(".title")) %>
 <section class="content-header">
 </section>
+
 <section class="content">
   <div class="row">
     <div class="col-md-12">
@@ -42,6 +43,14 @@
           </table>
         </div>
       </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3 col-md-offset-9(">    
+      <a href="<%= statistics_total_path %>"
+        data-turbolinks="false" class="btn btn-primary btn-block" target="blank">
+        <%= t(".total") %>
+      </a>
     </div>
   </div>
 </section>

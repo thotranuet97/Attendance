@@ -13,6 +13,7 @@ en:
         today: "Today"
         unlock: "Unlock"
         id: "ID"
+        total: "Total"
       show:
         attendances: "Attendances:"
         calendar: "Calendar"
@@ -123,5 +124,8 @@ en:
       hi: "Hi,"
       password: "Password:"
       user_name: "Username:"
-
+  statistics:
+    total:
+      title: "Total"
+      total_hours: "Total Hours"
 
