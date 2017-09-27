@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
-  get 'statistics/total'
-
-  get 'total/total'
-
+  
   root "application#login"
   get "/login" => "logins#new"
   post "/login" => "logins#create"
@@ -15,6 +12,7 @@ Rails.application.routes.draw do
       put "unlock"
       get "total"
     end
+    resources :statistics, only: [:index]
     resources :attendances, only: [:update, :destroy]
   end
   resources :change_passwords, only: [:edit, :update]

@@ -2,6 +2,7 @@ class Attendance < ActiveRecord::Base
   belongs_to :user
 
   default_scope -> {order(date: :desc)}
+  
 
   validates :user_id, presence: true
   validates :date, presence: true, uniqueness: {scope: :user_id}

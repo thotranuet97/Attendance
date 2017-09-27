@@ -1,0 +1,59 @@
+<% provide(:title, t(".title")) %>
+<section class="content-header">
+</section>
+
+<section class="content">
+  <div class="row"> 
+    <div class="col-md-3">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title"><%= t(".title") %></h3>
+        </div>
+        <div class="box-body">
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-6">
+                <%= label_tag :Month %>
+                <%= select_tag(:month, options_for_select(@month), class: "btn btn-primary") %>
+              </div>
+              <div class="col-md-6">
+                <%= label_tag :Year %>
+                <%= select_tag(:year, options_for_select(@year), class: "btn btn-primary") %>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-12">
+                <%= submit_tag :Show, class: "form_submit col-md-12 btn btn-primary", name: "sub" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <% if (@test) %>
+      <div class="col-md-9">
+        <div class="box box-primary">
+          <div class="box-header with-border">
+            <h3 class="box-title"><%= t(".title") %></h3>
+          </div>
+          <div class="box-body">
+            <table class="table table-bordered">
+              <tr>
+                <th><%= t(".full_name") %></th>
+                <th><%= t(".total_hours") %></th>
+              </tr>
+              <% @total_time.each do |row| %>
+                <tr>
+                  <td><%= row['name'] %></td>
+                  <td><%= row['time'].strftime("%T") %></td> 
+                </tr> 
+              <% end %>                           
+            </table>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>

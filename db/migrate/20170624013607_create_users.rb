@@ -9,7 +9,6 @@ class CreateUsers < ActiveRecord::Migration
       t.boolean :admin, default: false
       t.boolean :lock, default: false
       t.boolean :first_password, default: true
-      t.time :total_hours
       t.timestamps null: false
     end
     add_index :users, :user_name, unique: true

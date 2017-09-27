@@ -13,7 +13,7 @@ en:
         today: "Today"
         unlock: "Unlock"
         id: "ID"
-        total: "Total"
+        statistic: "Statistics"
       show:
         attendances: "Attendances:"
         calendar: "Calendar"
@@ -41,6 +41,11 @@ en:
         year: "Year:"
       new:
         title: "Create user"
+    statistics:
+      index:
+        title: "Statistics"
+        total_time: "Total Time"
+        time_out_nil: 'have not "Finished" someday!'
   change_passwords:
     edit:
       save: "Save"
@@ -124,8 +129,4 @@ en:
       hi: "Hi,"
       password: "Password:"
       user_name: "Username:"
-  statistics:
-    total:
-      title: "Total"
-      total_hours: "Total Hours"
-
+  
