@@ -13,11 +13,11 @@
             <%= form_tag('/admin/statistics/',method: :get) do %>
               <div class="row">
                 <div class="col-md-6">
-                  <%= label_tag :Month %>
+                  <%= label_tag :Month %><br>
                   <%= select_month(Date.today, {use_two_digit_numbers: true}, {class: "btn btn-primary", name: :month}) %>
                 </div>
                 <div class="col-md-6">
-                  <%= label_tag :Year %>
+                  <%= label_tag :Year %><br>
                   <%= select_year(Date.today, {start_year: 2017, end_year: 2025}, {class: "btn btn-primary", name: :year}) %>
                 </div>
               </div>

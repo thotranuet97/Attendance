@@ -43,6 +43,7 @@ en:
         title: "Create user"
     statistics:
       index:
+        id: "ID"
         title: "Statistics"
         total_time: "Total Time"
         time_out_nil: 'have not "Finished" someday!'
