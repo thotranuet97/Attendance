@@ -1,16 +1,15 @@
 <% provide(:title, t(".title")) %>
 <section class="content-header">
 </section>
-
-  <section class="content">
-    <div class="row">
-      <div class="col-md-3">
-        <div class="box box-primary">
-          <div class="box-header with-border">
-            <h3 class="box-title"><%= t(".select") %></h3>
-          </div>
-          <div class="box-body">            
-            <%= form_tag('/admin/statistics/',method: :get) do %>
+<section class="content">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title"><%= t(".select") %></h3>
+        </div>
+        <div class="box-body">
+          <%= form_tag('/admin/latelists', method: :get) do %>
               <div class="row">
                 <div class="col-md-6">
                   <%= label_tag :Month %><br>
@@ -24,18 +23,18 @@
               <br>
               <div class="row">
                 <div class="col-md-6">
-                  <%= submit_tag "Show", class: "form_submit col-md-12 btn btn-primary" %>
+                  <%= submit_tag :Show, class: "form_submit col-md-12 btn btn-primary" %>
                 </div>
               </div>
-            <% end %>
-          </div>
+          <% end %>
         </div>
       </div>
-      <% if(@test) %>
+    </div>
+    <% if(@check) %>
         <div class="col-md-9">
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title"><%= t(".title") %></h3>
+              <h3 class="box-title"><%= t(".title_list") %></h3>
             </div>
             <div class="box-body">
               <div class="responsive-calendar">
@@ -43,37 +42,36 @@
                   <h3>
                     <span><%= params[:year] %></span>
                     <span><%= @months[params[:month].to_i-1] %></span>
-                  </h3>
+                   </h3>
                 </div><hr>
               </div>
               <table class="table table-bordered table-striped table-responsive">
                 <thead>
                   <tr>
                     <th><%= t(".id") %></th>
-                    <th><%= t(".full_name") %></th>
-                    <th><%= t(".total_hours") %></th>
+                    <th><%= t(".date") %></th>
+                    <th><%= t(".full_name") %></th>              
+                    <th><%= t(".time_in") %></th>                    
                   </tr>
                 </thead>
                 <tbody>
-                  <% @total_time.each do |row| %>
+                  <% count = 1 %>
+                  <% @lists.each do |row| %>
                     <tr>
-                      <td><%= row['id'] %></td>
+                      <td><%= count %></td>
+                      <td><%= row['date'].strftime("%d-%m-%Y") %></td>
                       <td>
                         <%= link_to(row['name'], admin_user_path(row['id']), data: {turbolinks: false}) %>
                       </td>
-                      <td>
-                        <%= [row['time'] / 3600, row['time']/ 60 % 60, row['time']% 60].map { |t|
-                          t.to_s.rjust(2,'0') }.join(':') %>
-                      </td>
+                      <td><%= row['tin'].strftime("%T") %></td>
+                      <% count += 1 %>
                     </tr>
                   <% end %>
                 </tbody>
               </table>
             </div>          
-          </div>
-          
+          </div>          
         </div>
       <% end %>
-    </div>
-  </section>
-  
+  </div>
+</section>

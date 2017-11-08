@@ -47,6 +47,17 @@ en:
         title: "Statistics"
         total_time: "Total Time"
         time_out_nil: 'have not "Finished" someday!'
+    latelists:
+      index:
+        id: "ID"
+        title: "Late lists"
+        select: "Select"
+        title_list: "Late Lists"
+        date: "Date"
+        full_name: "Full name"
+        time_in: "Time in"
+        time_out_nil: 'have not "Finished" someday!'
+
   change_passwords:
     edit:
       save: "Save"
@@ -61,6 +72,7 @@ en:
     attendances:
       fail: "Fail"
       success: "Success"
+      warning: "Đi muộn. Anh Học buồn lắm!"
     change_passwords:
       fail: "Fail"
       success: "Change password success"
@@ -129,5 +141,4 @@ en:
       email: "Email:"
       hi: "Hi,"
       password: "Password:"
-      user_name: "Username:"
-  
+      user_name: "Username:"  

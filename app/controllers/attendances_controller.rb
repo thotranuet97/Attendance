@@ -6,13 +6,18 @@ class AttendancesController < ApplicationController
     datetime = Time.zone.now
     attendance = current_user.attendances.build(date: datetime, time_in: datetime)
     if attendance.save
-      flash[:success] = t("controller.attendances.success")
-      redirect_to users_path
+        time_go = attendance.time_in
+        if ((time_go.strftime("%H:%M") > "08:00:00" && time_go.strftime("%H:%M") < "12:00:00") || time_go.strftime("%H:%M") > "14:00:00")
+          flash[:warning] = t("controller.attendances.warning")
+        else
+          flash[:success] = t("controller.attendances.success")
+        end
+        redirect_to users_path
     else
-      flash[:danger] = t("controller.attendances.fail")
-      redirect_to users_path
+        flash[:danger] = t("controller.attendances.fail")
+        redirect_to users_path
     end
-  end
+ end
 
   def update
     datetime = Time.zone.now

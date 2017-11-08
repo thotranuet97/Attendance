@@ -3,9 +3,7 @@ class Admin::StatisticsController < ApplicationController
   before_action :require_admin
 
   def index
-    @tmp = 0 
     @users = User.all
-
     @test = false
     if !params[:month].nil? && !params[:year].nil?
       @test = true
@@ -22,17 +20,15 @@ class Admin::StatisticsController < ApplicationController
         time = params[:year].to_s + params[:month].to_s 
       end
     end
-   
+  
     @total_time = Attendance.select('u.id, u.full_name as name, 
       sum(time_to_sec(timediff(time_out, time_in))) as time')
         .joins('inner join users as u on u.id = user_id ')
         .where('time_out IS NOT NULL AND extract(year_month FROM date) = ?', time)
         .group('user_id')
         .reorder('')  
-        
+    
     @months = ['January','February','March','April','May','June',
               'July','August','September','October','November','December']
   end
-
 end
-

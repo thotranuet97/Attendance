@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  
   root "application#login"
   get "/login" => "logins#new"
   post "/login" => "logins#create"
@@ -10,11 +9,13 @@ Rails.application.routes.draw do
     resources :users do
       put "lock"
       put "unlock"
-      get "total"
     end
-    resources :statistics, only: [:index]
     resources :attendances, only: [:update, :destroy]
+    resources :statistics, only: [:index] 
+    resources :latelists, only: [:index] 
   end
+
   resources :change_passwords, only: [:edit, :update]
   get "*path" => redirect("/")
+
 end
